@@ -57,6 +57,23 @@ app.put('/api/v1/sensores/:id', async (req, res) => {
   } 
 });
 
+app.delete('/api/v1/sensores/:id', async (req, res) => {
+  try { 
+    const sensorId = req.params.id;
+    const sensores = await readSensorFile();
+    const sensorIndex = sensores.findIndex(sensor => sensor.id === sensorId);
+    if (sensorIndex === -1) {
+      return res.status(404).json({ error: 'Sensor não encontrado' });
+    }
+
+    sensores.splice(sensorIndex, 1);
+    await writeSensorFile(sensores);
+    res.status(200).json({ message: 'Sensor deletado com sucesso' });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}...`);
 });
