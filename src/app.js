@@ -1,5 +1,6 @@
 import express from 'express';
 import {readSensorFile, writeSensorFile} from './utils/sensorFile.js';
+import indexRouter from './routes/indexRouter.js';
 const app = express();
 
 const PORT = 3000;
@@ -73,6 +74,8 @@ app.delete('/api/v1/sensores/:id', async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+app.use("/api/v1", indexRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}...`);
