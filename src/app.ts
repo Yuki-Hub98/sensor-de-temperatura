@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
@@ -8,6 +9,7 @@ import { appDataSource } from "./database/appDataSource.js";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import compression from "compression";
+import pesquisadorRouter from "./routes/pesquisadorRoutes.js";
 
 import errorHandler from "./middleware/errorHandler.js";
 
@@ -35,7 +37,7 @@ app.use(express.json());
 
 app.use(compression({ threshold: 1024 }))
 
-app.use('/api', sensorRouter);
+app.use('/api/v1', sensorRouter, pesquisadorRouter);
 
 app.use(errorHandler)
 

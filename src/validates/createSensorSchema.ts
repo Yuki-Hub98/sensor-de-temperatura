@@ -16,7 +16,7 @@ export const  createSensorSchema = z.object({
         (val) => (val === undefined ? "": val),
         z.string()
             .min(1, "Número Serial é obrigatório!")
-            .length(10, "Número de caracteres deve ser exatamente 10")
+            .length(5, "Número de caracteres deve ser exatamente 10")
             .regex(/^[A-Z0-9]+$/, "Número Serial deve conter apenas letras maísculas e  números")
     )
     
