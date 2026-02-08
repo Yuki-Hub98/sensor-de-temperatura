@@ -32,6 +32,8 @@ pesquisadorRouter.get(
 
 pesquisadorRouter.put(
   "/pesquisadores/:id",
+  validarBody(createPesquisadorSchema),
+  validarPesquisador,
   pesquisadorController.update
 );
 

@@ -11,6 +11,8 @@ export const  createSensorSchema = z.object({
             .max(50, "Máximo de 50 caracteres")
             .regex(/^[a-zA-Z\s]+$/, "Nome só dever letras e espaços")
     ),
+    
+    status: z.enum(["Ativo", "Inativo", "Manutencao"]),
 
     serialNumber: z.preprocess(
         (val) => (val === undefined ? "": val),

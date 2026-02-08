@@ -16,9 +16,9 @@ class SensorService {
 
   public async addSensor(body: unknown): Promise<Sensor> {
 
-    const {  nome, serialNumber, descricao } = body as Sensor;
+    const {  nome, serialNumber } = body as Sensor;
 
-    if(!nome || !serialNumber || !descricao) {
+    if(!nome || !serialNumber) {
       throw new Error("Missing required sensor fields");
     }
     const sensorExiste = await this.sensorRepository.findOne({ where: { serialNumber } })
@@ -28,7 +28,6 @@ class SensorService {
     const novoSensor = await this.sensorRepository.create({
         nome,
         serialNumber,
-        descricao
     })
       await this.sensorRepository.save(novoSensor);
       return novoSensor;

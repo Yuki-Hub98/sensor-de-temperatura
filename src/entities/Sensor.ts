@@ -13,6 +13,36 @@ export class Sensor {
   nome: string;
 
   @Column({ type: "varchar", nullable: true })
-  descricao?: string;
+  modelo: string;
+
+  @Column({ type: "varchar", nullable: true })
+  fabricante: string;
+
+  @Column({ type: "varchar", nullable: true })
+  tipo: string;
+
+  @Column({ type: "varchar", nullable: true })
+  status: string;
+
+  @Column({ type: "varchar", nullable: true })
+  ipFixo: string;
+
+  @Column({ type: "date", nullable: true })
+  dataInstalacao: Date;
+
+  @Column({ type: "date", nullable: true })
+  dataManutencao: Date;
+
+  @Column({ type: "number", nullable: true })
+  cicloLeitura: number;
+
+  @Column({ type: "number", nullable: true })
+  latitude: number;
+
+  @Column({ type: "number", nullable: true })
+  longidade: number;
+
+  @Column({ type: "varchar", nullable: true })
+  finalidade: string;
 
 }
